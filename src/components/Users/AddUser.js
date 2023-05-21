@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
+import UsersList from "./UsersList";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [enteredUserName, setEnteredUserName] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
   const addUserHandler = (event) => {
@@ -14,7 +15,7 @@ const AddUser = () => {
     if (+enteredAge < 1) {
       return;
     }
-    console.log(enteredAge, enteredUserName);
+    props.onAddUser(enteredUserName, enteredAge);
     setEnteredUserName("");
     setEnteredAge("");
   };
